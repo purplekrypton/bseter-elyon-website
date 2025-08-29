@@ -294,3 +294,79 @@ body {
 .what-grid img:hover {
   transform: scale(1.05);
 }
+
+/* Navbar */
+.navbar {
+  background: #000;
+  padding: 15px 30px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: 50px;
+}
+
+/* Nav Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.nav-links li a:hover {
+  background: #A0C878; /* Green highlight */
+  color: #143D60;
+}
+
+/* Hamburger */
+.hamburger {
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #000;
+    position: absolute;
+    top: 70px;
+    right: 30px;
+    width: 200px;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .nav-links li {
+    margin-bottom: 15px;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+}
