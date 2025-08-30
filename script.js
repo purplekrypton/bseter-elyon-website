@@ -45,3 +45,36 @@ window.addEventListener("scroll", () => {
 //     1024: { slidesPerView: 3 } // desktops
 //   }
 // });
+
+
+
+// List of YouTube video IDs to play in sequence
+const videos = [
+  'WZb81LfpOQE',  
+  'J5oKelbxUyc',  
+  'LgfHw6lGEPw',  
+  'PrMGXlstRRE'   
+];
+
+let current = 0;
+let player;
+
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('youtube-player', {
+    events: {
+      'onStateChange': onPlayerStateChange
+    }
+  });
+}
+
+// Detect when a video ends and load the next one
+function onPlayerStateChange(event) {
+  // event.data === 0 means video ended
+  if (event.data === YT.PlayerState.ENDED) {
+    current = (current + 1) % videos.length;  // Loop back to first video after last
+    player.loadVideoById({
+      'videoId': videos[current],
+      'startSeconds': 0
+    });
+  }
+}
